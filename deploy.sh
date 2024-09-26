@@ -6,12 +6,10 @@ ENV_FILE="./.env"
 pushd ~/TelegramBotLaurentTransport/ || exit
 
 # Переходим на ветку main
-#git checkout dev
-git fetch
+git checkout dev
 
 # Обновляем ветку main
-#git pull origin dev
-git pull origin main
+git pull origin dev
 
 # Останавливаем старые контейнеры микросервисов и запускаем новые, с обновлённым кодом
 docker compose -f docker-compose.yml --env-file $ENV_FILE down --timeout=60 --remove-orphans
