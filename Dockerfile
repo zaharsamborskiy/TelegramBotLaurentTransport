@@ -11,4 +11,4 @@ ADD ./pom.xml $HOME/TelegramBotLaurentTransport
 ADD ./src $HOME/TelegramBotLaurentTransport/src
 RUN mvn -f $HOME/TelegramBotLaurentTransport/pom.xml -s $MVN_SETTINGS clean package -Dskiptests --debug
 
-CMD java -jar $HOME/telegrambotlaurenttransport/target/telegrambotlaurenttransport-0.0.1.jar
+CMD java -jar $HOME/telegrambotlaurenttransport/target/TelegramBotLaurentTransport.jar
