@@ -1,5 +1,3 @@
-version: '3.9'
-
 volumes:
   traefik-certs:
     driver: local
@@ -12,7 +10,7 @@ services:
       context: ./
       dockerfile: ./TelegramBotLaurentTransport/Dockerfile
     environment:
-      TBLT_PORT: ${TGLT_PORT}
+      TBLT_PORT: ${SERVER_PORT}
       TG_BOT_NAME: ${TG_BOT_NAME}
       TG_BOT_TOKEN: ${TG_BOT_TOKEN}
       TG_BOT_URI: ${TG_BOT_URI}
