@@ -1,6 +1,6 @@
 FROM maven:3.8-openjdk-17-slim
 
-ENV HOME=/home/app
+ENV HOME=/home/laurent
 RUN mkdir -p $HOME
 
 ADD ./settings.xml /usr/share/maven/ref/
