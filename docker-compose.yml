@@ -3,12 +3,12 @@ volumes:
     driver: local
 
 services:
-  TelegramBotLaurentTransport:
-    container_name: TelegramBotLaurentTransport
+  telegrambotlaurenttransport:
+    container_name: telegrambotlaurenttransport
     restart: on-failure
     build:
       context: ./
-      dockerfile: ./TelegramBotLaurentTransport/Dockerfile
+      dockerfile: ./telegrambotlaurenttransport/Dockerfile
     environment:
       TBLT_PORT: ${SERVER_PORT}
       TG_BOT_NAME: ${TG_BOT_NAME}
@@ -16,10 +16,10 @@ services:
       TG_BOT_URI: ${TG_BOT_URI}
     labels:
       - "traefik.enable=true"
-      - "traefik.http.services.TelegramBotLaurentTransport.loadbalancer.server.port=${SERVER_PORT}"
-      - "traefik.http.routers.TelegramBotLaurentTransport.rule=Host(`${HOST_URL}`) && PathPrefix(`/callback`)"
-      - "traefik.http.routers.TelegramBotLaurentTransport.entrypoints=websecure8"
-      - "traefik.http.routers.TelegramBotLaurentTransport.tls=true"
+      - "traefik.http.services.telegrambotlaurenttransport.loadbalancer.server.port=${SERVER_PORT}"
+      - "traefik.http.routers.telegrambotlaurenttransport.rule=Host(`${HOST_URL}`) && PathPrefix(`/callback`)"
+      - "traefik.http.routers.telegrambotlaurenttransport.entrypoints=websecure8"
+      - "traefik.http.routers.telegrambotlaurenttransport.tls=true"
     logging:
       driver: 'json-file'
       options:
