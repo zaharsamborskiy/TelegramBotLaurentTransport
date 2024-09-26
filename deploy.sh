@@ -3,7 +3,7 @@
 ENV_FILE="./.env"
 
 # Обновление кода и деплой backend приложения
-pushd ~/TelegramBotLaurentTransport/ || exit
+pushd ~/TelegramBotLaurentTransport || exit
 
 # Переходим на ветку main
 #git checkout dev
