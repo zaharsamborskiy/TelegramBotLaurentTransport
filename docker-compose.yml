@@ -17,7 +17,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.telegrambotlaurenttransport.loadbalancer.server.port=${SERVER_PORT}"
-      - "traefik.http.routers.telegrambotlaurenttransport.rule=Host(`${HOST_URL}`) && PathPrefix(`/callback`)"
+      - "traefik.http.routers.telegrambotlaurenttransport.rule=Host(`${HOST_URL}`) && PathPrefix(`/callback/update`)"
       - "traefik.http.routers.telegrambotlaurenttransport.entrypoints=websecure8"
       - "traefik.http.routers.telegrambotlaurenttransport.tls=true"
     logging:
