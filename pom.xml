@@ -9,8 +9,8 @@
 
   <groupId>ru.laurent</groupId>
   <artifactId>TelegramBotLaurentTransport</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>TelegramBotLaurentTransport Maven Webapp</name>
+  <version>0.0.1</version>
+  <name>TelegramBotLaurentTransport</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -18,6 +18,7 @@
     <maven.compiler.target>11</maven.compiler.target>
     <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
     <telegrambot.starter.version>6.1.0</telegrambot.starter.version>
+    <ru.laurent.version>0.0.1</ru.laurent.version>
     <lombok.version>1.18.22</lombok.version>
     <log4j.version>1.2.17</log4j.version>
   </properties>
@@ -90,7 +91,15 @@
           <target>${maven.compiler.target}</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>ru.laurent.LaurentTelegramBot</mainClass>
+          <layout>JAR</layout>
+        </configuration>
+      </plugin>
     </plugins>
-    <finalName>TelegramBotLaurentTransport</finalName>
   </build>
+
 </project>

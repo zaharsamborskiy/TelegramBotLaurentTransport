@@ -1,25 +1,29 @@
+version: '3.9'
+
 volumes:
   traefik-certs:
     driver: local
 
 services:
-  telegrambotlaurenttransport:
-    container_name: telegrambotlaurenttransport
+  telegram_bot_laurent_transport:
+    container_name: telegram_bot_laurent_transport
     restart: on-failure
     build:
       context: ./
-      dockerfile: ./Dockerfile
+      dockerfile: ./TelegramBotLaurentTransport/Dockerfile
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
     environment:
-      TBLT_PORT: ${SERVER_PORT}
+      SERVER_PORT: ${SERVER_PORT}
       TG_BOT_NAME: ${TG_BOT_NAME}
       TG_BOT_TOKEN: ${TG_BOT_TOKEN}
       TG_BOT_URI: ${TG_BOT_URI}
     labels:
       - "traefik.enable=true"
-      - "traefik.http.services.telegrambotlaurenttransport.loadbalancer.server.port=${SERVER_PORT}"
-      - "traefik.http.routers.telegrambotlaurenttransport.rule=Host(`${HOST_URL}`) && PathPrefix(`/callback/update`)"
-      - "traefik.http.routers.telegrambotlaurenttransport.entrypoints=websecure8"
-      - "traefik.http.routers.telegrambotlaurenttransport.tls=true"
+      - "traefik.http.services.telegram_bot_laurent_transport.loadbalancer.server.port=${SERVER_PORT}"
+      - "traefik.http.routers.telegram_bot_laurent_transport.rule=Host(`${HOST_URL}`) && PathPrefix(`/callback`)"
+      - "traefik.http.routers.telegram_bot_laurent_transport.entrypoints=websecure8"
+      - "traefik.http.routers.telegram_bot_laurent_transport.tls=true"
     logging:
       driver: 'json-file'
       options:

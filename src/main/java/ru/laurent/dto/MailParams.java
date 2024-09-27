@@ -1,6 +1,7 @@
 package ru.laurent.dto;
 
 import lombok.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -12,7 +13,10 @@ import java.io.File;
 @NoArgsConstructor
 @Component
 public class MailParams {
-    private String id = "";
-    private String emailTo = "";
-    private File file = new File("");
+    @Value("${env_id}")
+    private String id;
+    @Value("${env_username}")
+    private String emailTo;
+    @Value("${env_path}")
+    private File file;
 }

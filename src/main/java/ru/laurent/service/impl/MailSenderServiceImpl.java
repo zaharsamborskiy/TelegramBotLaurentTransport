@@ -2,12 +2,11 @@ package ru.laurent.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 import ru.laurent.dto.MailParams;
 import ru.laurent.service.MailSenderService;
 
@@ -18,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Component
+@EnableAutoConfiguration
 public class MailSenderServiceImpl implements MailSenderService {
 
     private final JavaMailSender javaMailSender;

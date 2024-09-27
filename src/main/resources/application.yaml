@@ -1,0 +1,20 @@
+server:
+  port: ${SERVER_PORT:8084}
+
+spring:
+  jpa:
+    generate-ddl: true
+  mail:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    protocol: ${MAIL_PROTOCOL}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+
+bot_uri: ${TG_BOT_URI}
+bot_name: ${TG_BOT_NAME}
+token: ${TG_BOT_TOKEN}
+env_id: ${ENV_ID}
+env_username: ${ENV_USERNAME}
+env_path: ${ENV_PATH}
+

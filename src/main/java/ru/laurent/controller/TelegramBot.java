@@ -21,11 +21,11 @@ import javax.annotation.PostConstruct;
 @Log4j
 @RequiredArgsConstructor
 public class TelegramBot extends TelegramWebhookBot {
-    @Value("${bot.name}")
+    @Value("${bot_name}")
     private String botName;
-    @Value("${bot.token}")
+    @Value("${token}")
     private String botToken;
-    @Value("${bot.uri}")
+    @Value("${bot_uri}")
     private String botUri;
     private final UpdateProcessor updateProcessor;
 
