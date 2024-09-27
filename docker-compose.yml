@@ -10,7 +10,7 @@ services:
     restart: on-failure
     build:
       context: ./
-      dockerfile: ./Dockerfile
+      dockerfile: ./TelegramBotLaurentTransport/Dockerfile
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     environment:
