@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ENV_FILE="./src/.env"
+ENV_FILE="./.env"
 
 # Обновление кода и деплой backend приложения
 pushd ~/TelegramBotLaurentTransport/ || exit

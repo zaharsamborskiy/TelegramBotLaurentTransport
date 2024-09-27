@@ -23,9 +23,9 @@ public class MailSenderServiceImpl implements MailSenderService {
     private final JavaMailSender javaMailSender;
     @Value("${spring.mail.username}")
     private String emailFrom;
-    @Value("${service.activation.uri}")
+    @Value("${ACTIVATION_URI}")
     private String activationServiceUri;
-    @Value("${service.mail.uri}")
+    @Value("${MAIL_URI}")
     private String serviceMailUri;
     @Autowired
     private MailParams mailParams;

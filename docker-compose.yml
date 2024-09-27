@@ -29,6 +29,8 @@ services:
       options:
         max-size: '100m'
         max-file: '3'
+    env_file:
+      .env
 
   traefik:
     container_name: traefik
@@ -80,3 +82,5 @@ services:
       retries: 3
       start_period: 5s
     restart: unless-stopped
+    env_file:
+      .env
