@@ -36,18 +36,15 @@ public class ExcelFile {
         sheet.addMergedRegion(new CellRangeAddress(0, 1, 8, 8));
         sheet.addMergedRegion(new CellRangeAddress(0, 0, 9, 10));
         row0.createCell(0).setCellValue("Дата");
-        row0.createCell(1).setCellValue("Фирма");
-        row0.createCell(2).setCellValue("Маршрут");
-        row0.createCell(3).setCellValue("Пробег, км");
-        row0.createCell(4).setCellValue("Топливо(рейс)");
-        row0.createCell(5).setCellValue("Стоимость");
-        row1.createCell(5).setCellValue("Ставка");
-        row1.createCell(6).setCellValue("С НДС");
-        row1.createCell(7).setCellValue("Итоговая");
-        row0.createCell(8).setCellValue("Доп. расходы");
-        row0.createCell(9).setCellValue("Поступления/оплаты");
-        row1.createCell(9).setCellValue("Штрафы");
-        row1.createCell(10).setCellValue("Фирма/период");
+        row0.createCell(1).setCellValue("Гос. номер");
+        row0.createCell(2).setCellValue("ФИО");
+        row0.createCell(3).setCellValue("Маршрут");
+        row0.createCell(4).setCellValue("Фирма");
+        row0.createCell(5).setCellValue("Ставка");
+        row1.createCell(5).setCellValue("Начальное показание од.");
+        row1.createCell(6).setCellValue("Конечное показание од.");
+        row1.createCell(7).setCellValue("Топливо");
+        row0.createCell(8).setCellValue("Комментарии");
         for (int i = 0; i < 11; i++) {
             sheet.setColumnWidth(i, 25*150);
         }

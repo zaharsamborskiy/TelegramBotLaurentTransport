@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.User;
 import ru.laurent.dto.MailParams;
 import ru.laurent.service.ExcelFile;
 import ru.laurent.service.impl.MailSenderServiceImpl;
@@ -64,51 +65,51 @@ public class UpdateProcessor {
     }
     private void handleResponse(long chatId, String response) {
         String currentState = userStates.get(chatId);
-        String[] responses = userResponses.getOrDefault(chatId, new String[6]);
+        String[] responses = userResponses.getOrDefault(chatId, new String[9]);
 
         switch (currentState) {
             case "question1":
                 responses[0] = response; // Сохраняем дату
                 userResponses.put(chatId, responses);
                 userStates.put(chatId, "question2");
-                sendMessage(chatId, new StringBuilder("Введите фирму")
+                sendMessage(chatId, new StringBuilder("Введите гос.номер")
                         .append(emojiBot.getEmojiFactory())
                         .append("\n")
-                        .append("(формат ввода: Ярск или ИП Козлов) :")
+                        .append("(формат ввода: А555АА) :")
                         .toString());
                 break;
             case "question2":
-                responses[1] = response; // Сохраняем фирму
+                responses[1] = response; // Сохраняем гос. номер
                 userResponses.put(chatId, responses);
                 userStates.put(chatId, "question3");
-                sendMessage(chatId, new StringBuilder("Введите маршрут")
+                sendMessage(chatId, new StringBuilder("Введите ФИО")
                         .append(emojiBot.getEmojiTruck())
                         .append("\n")
-                        .append("(формат ввода: Назарово-Шарыпово или Ачинск) :")
+                        .append("(формат ввода: Иванов Иван Иванович или Иванов И.И.) :")
                         .toString());
                 break;
             case "question3":
-                responses[2] = response; // Сохраняем пробег
+                responses[2] = response; // Сохраняем ФИО
                 userResponses.put(chatId, responses);
                 userStates.put(chatId, "question4");
-                sendMessage(chatId, new StringBuilder("Введите пробег")
+                sendMessage(chatId, new StringBuilder("Введите маршрут")
                         .append(emojiBot.getEmojiMotorway())
                         .append("\n")
-                        .append("(формат ввода: 120) :")
+                        .append("(формат ввода: Ярск или Назарово - Ачинск) :")
                         .toString());
                 break;
             case "question4" :
-                responses[3] = response; // Сохраняем пробег
+                responses[3] = response; // Сохраняем маршрут
                 userResponses.put(chatId, responses);
                 userStates.put(chatId, "question5");
-                sendMessage(chatId, new StringBuilder("Введите топливо")
+                sendMessage(chatId, new StringBuilder("Введите фирму")
                         .append(emojiBot.getEmojiFuel())
                         .append("\n")
-                        .append("(формат ввода: 30) :")
+                        .append("(формат ввода: ИП Иванов, ООО Лаурент) :")
                         .toString());
                 break;
             case "question5" :
-                responses[4] = response; // Сохраняем топливо
+                responses[4] = response; // Сохраняем фирму
                 userResponses.put(chatId, responses);
                 userStates.put(chatId, "question6");
                 sendMessage(chatId, new StringBuilder("Введите ставку")
@@ -120,14 +121,58 @@ public class UpdateProcessor {
             case "question6" :
                 responses[5] = response; // Сохраняем ставку
                 userResponses.put(chatId, responses);
+                userStates.put(chatId, "question7");
+                sendMessage(chatId, new StringBuilder("Введите начальное показание одометра")
+                        .append(emojiBot.getEmojiTruck())
+                        .append("\n")
+                        .append("(формат ввода: 123827)")
+                        .toString());
+                break;
+            case "question7" :
+                responses[6] = response; // сохраняем нач. пок. одом.
+                userResponses.put(chatId, responses);
+                userStates.put(chatId, "question8");
+                sendMessage(chatId, new StringBuilder("Введите конечное показание одометра")
+                        .append(emojiBot.getEmojiTruck())
+                        .append("\n")
+                        .append("формат ввода: 130553")
+                        .toString());
+                break;
+            case "question8" :
+                responses[7] = response; // сохраняем кон. пок. одом.
+                userResponses.put(chatId, responses);
+                userStates.put(chatId, "question9");
+                sendMessage(chatId, new StringBuilder("Введите топливо")
+                        .append(emojiBot.getEmojiTruck())
+                        .append("\n")
+                        .append("формат ввода : 1000")
+                        .toString());
+                break;
+            case "question9" :
+                responses[8] = response; // сохраняем топливо
+                userResponses.put(chatId, responses);
+                userStates.put(chatId, "question10");
+                sendMessage(chatId, new StringBuilder("Введите комментарии")
+                        .append(emojiBot.getEmojiTruck())
+                        .append("\n")
+                        .append("Если комментария нет поставьте -")
+                        .toString());
+                break;
+            case "question10" :
+                responses[9] = response; // Сохраняем комментарии
+                userResponses.put(chatId, responses);
                 userStates.remove(chatId);
                 sendMessage(chatId, new StringBuilder("Ваши введенные данные:")
                         .append("\n").append("Дата: ").append(responses[0])
-                        .append("\n").append("Фирма: ").append(responses[1])
-                        .append("\n").append("Маршрут: ").append(responses[2])
-                        .append("\n").append("Пробег: ").append(responses[3])
-                        .append("\n").append("Топливо: ").append(responses[4])
+                        .append("\n").append("Гос.Номер: ").append(responses[1])
+                        .append("\n").append("ФИО: ").append(responses[2])
+                        .append("\n").append("Маршрут: ").append(responses[3])
+                        .append("\n").append("Фирма: ").append(responses[4])
                         .append("\n").append("Ставка: ").append(responses[5])
+                        .append("\n").append("Начальное показание одометра: ").append(responses[6])
+                        .append("\n").append("Конечное показание одометра: ").append(responses[7])
+                        .append("\n").append("Топливо: ").append(responses[8])
+                        .append("\n").append("Комментарии: ").append(responses[9])
                         .append("\n").append("Для начала ввода новых данных введите /start").toString());
                 if (!excelFile.isActive()){
                     excelFile.createHeaders(workbook);
