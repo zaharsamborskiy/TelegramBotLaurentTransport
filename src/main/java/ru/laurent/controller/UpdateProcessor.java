@@ -65,7 +65,7 @@ public class UpdateProcessor {
     }
     private void handleResponse(long chatId, String response) {
         String currentState = userStates.get(chatId);
-        String[] responses = userResponses.getOrDefault(chatId, new String[9]);
+        String[] responses = userResponses.getOrDefault(chatId, new String[10]);
 
         switch (currentState) {
             case "question1":
