@@ -32,11 +32,11 @@ public class ExcelFile {
         row0.createCell(3).setCellValue("Маршрут");
         row0.createCell(4).setCellValue("Фирма");
         row0.createCell(5).setCellValue("Ставка");
-        row0.createCell(5).setCellValue("Начальное показание од.");
-        row0.createCell(6).setCellValue("Конечное показание од.");
-        row0.createCell(7).setCellValue("Топливо");
-        row0.createCell(8).setCellValue("Комментарии");
-        for (int i = 0; i < 11; i++) {
+        row0.createCell(6).setCellValue("Начальное показание од.");
+        row0.createCell(7).setCellValue("Конечное показание од.");
+        row0.createCell(8).setCellValue("Топливо");
+        row0.createCell(9).setCellValue("Комментарии");
+        for (int i = 0; i < 10; i++) {
             sheet.setColumnWidth(i, 25*150);
         }
     }
