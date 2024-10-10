@@ -26,24 +26,15 @@ public class ExcelFile {
 
     public void createHeaders(Workbook workbook) {
         Row row0 = sheet.createRow(0);
-        Row row1 = sheet.createRow(1);
-        sheet.addMergedRegion(new CellRangeAddress(0, 1, 0, 0));
-        sheet.addMergedRegion(new CellRangeAddress(0, 1, 1, 1));
-        sheet.addMergedRegion(new CellRangeAddress(0, 1, 2, 2));
-        sheet.addMergedRegion(new CellRangeAddress(0, 1, 3, 3));
-        sheet.addMergedRegion(new CellRangeAddress(0, 1, 4, 4));
-        sheet.addMergedRegion(new CellRangeAddress(0, 0, 5, 7));
-        sheet.addMergedRegion(new CellRangeAddress(0, 1, 8, 8));
-        sheet.addMergedRegion(new CellRangeAddress(0, 0, 9, 10));
         row0.createCell(0).setCellValue("Дата");
         row0.createCell(1).setCellValue("Гос. номер");
         row0.createCell(2).setCellValue("ФИО");
         row0.createCell(3).setCellValue("Маршрут");
         row0.createCell(4).setCellValue("Фирма");
         row0.createCell(5).setCellValue("Ставка");
-        row1.createCell(5).setCellValue("Начальное показание од.");
-        row1.createCell(6).setCellValue("Конечное показание од.");
-        row1.createCell(7).setCellValue("Топливо");
+        row0.createCell(5).setCellValue("Начальное показание од.");
+        row0.createCell(6).setCellValue("Конечное показание од.");
+        row0.createCell(7).setCellValue("Топливо");
         row0.createCell(8).setCellValue("Комментарии");
         for (int i = 0; i < 11; i++) {
             sheet.setColumnWidth(i, 25*150);
