@@ -161,8 +161,7 @@ public class UpdateProcessor {
                         .append("\n").append("Ставка: ").append(responses[5])
                         .append("\n").append("Начальное показание одометра: ").append(responses[6])
                         .append("\n").append("Конечное показание одометра: ").append(responses[7])
-                        .append("\n").append("Топливо: ").append(responses[8])
-                        .append("\n").append("Комментарии: ").append(responses[9])
+                        .append("\n").append("Комментарии: ").append(responses[8])
                         .append("\n").append("Для начала ввода новых данных введите /start").toString());
                 if (!excelFile.isActive()){
                     excelFile.createHeaders(workbook);
