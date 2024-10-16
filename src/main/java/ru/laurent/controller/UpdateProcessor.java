@@ -65,7 +65,7 @@ public class UpdateProcessor {
     }
     private void handleResponse(long chatId, String response) {
         String currentState = userStates.get(chatId);
-        String[] responses = userResponses.getOrDefault(chatId, new String[10]);
+        String[] responses = userResponses.getOrDefault(chatId, new String[9]);
 
         switch (currentState) {
             case "question1":
@@ -142,24 +142,14 @@ public class UpdateProcessor {
                 responses[7] = response; // сохраняем кон. пок. одом.
                 userResponses.put(chatId, responses);
                 userStates.put(chatId, "question9");
-                sendMessage(chatId, new StringBuilder("Введите топливо")
-                        .append(emojiBot.getEmojiTruck())
-                        .append("\n")
-                        .append("формат ввода : 1000")
-                        .toString());
-                break;
-            case "question9" :
-                responses[8] = response; // сохраняем топливо
-                userResponses.put(chatId, responses);
-                userStates.put(chatId, "question10");
                 sendMessage(chatId, new StringBuilder("Введите комментарии")
                         .append(emojiBot.getEmojiTruck())
                         .append("\n")
                         .append("Если комментария нет поставьте -")
                         .toString());
                 break;
-            case "question10" :
-                responses[9] = response; // Сохраняем комментарии
+            case "question9" :
+                responses[8] = response; // Сохраняем комментарии
                 userResponses.put(chatId, responses);
                 userStates.remove(chatId);
                 sendMessage(chatId, new StringBuilder("Ваши введенные данные:")
