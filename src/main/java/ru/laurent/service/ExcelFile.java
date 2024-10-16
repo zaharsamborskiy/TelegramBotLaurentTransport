@@ -34,8 +34,8 @@ public class ExcelFile {
         row0.createCell(5).setCellValue("Ставка");
         row0.createCell(6).setCellValue("Начальное показание од.");
         row0.createCell(7).setCellValue("Конечное показание од.");
-        row0.createCell(9).setCellValue("Комментарии");
-        for (int i = 0; i < 10; i++) {
+        row0.createCell(8).setCellValue("Комментарии");
+        for (int i = 0; i < 9; i++) {
             sheet.setColumnWidth(i, 25*150);
         }
     }
